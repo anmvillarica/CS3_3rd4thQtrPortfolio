@@ -1,0 +1,223 @@
+<html>
+<head>
+    <title>Ianna's Movie Directory!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="author" content="Arianna Nina M. Villarica">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw; height: 100vh;
+            padding: 0; margin: 0;  
+            background-color: #24273a;
+            color: #cad3f5;
+            font-family: "Roboto", sans-serif; 
+        }
+
+        #page {
+            margin: 0; 
+            padding: 2vw;
+            display: flex; 
+            gap: 2vw; 
+            height: auto; 
+        }
+
+        hr {
+            color: #cad3f5;
+            opacity: 0.5;
+        }
+
+        h2 {
+            color: #c6a0f6;
+        }
+
+        #movieForm {
+            background-color: #1e2030;
+            border: none; 
+            border-radius: 5px; 
+            width: 45%; 
+        }
+
+        #mainForm {
+            border: none; 
+        }
+
+        #rating > input {
+            display: none;
+        }
+
+        .star {
+            font-size: 2vw;
+            color: #b8c0e0;
+        }
+
+        #submitbtn {
+            color: #1e2030; 
+            padding: 5px; 
+            border-radius: 5px; 
+            background-color: #f5a97f;
+            border: none; 
+        }
+
+        #submitbtn:hover {
+            background-color: #b8c0e0;
+        }
+
+        #directory {
+            margin: 0; 
+            padding: 0; 
+            width: 80%; 
+        }
+
+        #directory > li { 
+            background-color: #8aadf4; color: #24273a;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        #nonForm {
+            width: 55%; 
+            padding: 0; margin: 0; 
+        }
+
+        #details {
+            background-color: #1e2030;
+            width: 50%; 
+            padding: 5px 10px; 
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body onload="update(JSON.parse(localStorage.getItem('savedMovies')))">
+    <div id="page">
+    <form id="movieForm">
+        <fieldset id="mainForm">
+            <h2>Add a Movie</h2>
+            <hr>
+            <br>
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+            <br><br>
+            <label for="year">Year:</label>
+            <input type="number" id="year" required>
+            <br><br>
+            <label for="genre">Genre:</label>
+            <select id="genre" required>
+                <option value="Action">Action</option>
+                <option value="Romcom">Romance-Comedy</option>
+                <option value="Horror">Horror/Thriller</option>
+                <option value="History">Historical</option>
+                <option value="Sci-fi">Science Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Cartoons">Cartoon</option>
+                <option value="Anime">Anime</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <br><br>
+            Rating:
+            <div id="rating">
+                <label for="s1"><span class="star">★</span></label>
+                <input required name="star" type="radio" id="s1" value="1" class="starRating">
+
+                <label for="s2"><span class="star">★</span></label>
+                <input name="star" type="radio" id="s2" value="2" class="starRating">
+
+                <label for="s3"><span class="star">★</span></label>
+                <input name="star" type="radio" id="s3" value="3" class="starRating">
+
+                <label for="s4"><span class="star">★</span></label>
+                <input name="star" type="radio" id="s4" value="4" class="starRating">
+                
+                <label for="s5"><span class="star">★</span></label>
+                <input name="star" type="radio" id="s5" value="5" class="starRating">
+            </div>
+            <br>
+        <button type="submit" id="submitbtn">Add a Movie</button>
+        </fieldset>
+    </form>
+
+    <div id="nonForm">
+        <h3>Movie List</h3>
+        <ul id="directory">
+        </ul>
+    </div>
+
+    <script>
+        var submit = document.getElementById("movieForm");
+        var rating = document.getElementById("rating");
+        var currMovie = 0; 
+
+        submit.addEventListener("submit", record)
+        function record(event) {
+            event.preventDefault(); 
+            var moviesList = JSON.parse(localStorage.getItem('savedMovies')) || [];
+
+            var titleInp = document.getElementById("title"); 
+            var yearInp = document.getElementById("year");
+            var genreInp = document.getElementById("genre");
+            var starInp = document.querySelector('input[name=star]:checked');
+            
+            var movie = {
+                title: titleInp.value,
+                year: yearInp.value,
+                genre: genreInp.value,
+                rating: starInp.value
+            }
+
+            moviesList.push(movie);
+            update(moviesList);
+
+            titleInp.value = "";
+            yearInp.value = ""; 
+            genreInp.value = "";
+            starInp.value = "";
+
+            var symbols = document.getElementsByClassName("star");
+            
+            for (let i = 0; i < symbols.length; i++)
+                symbols[i].style.color = "#b8c0e0";
+
+            localStorage.setItem('savedMovies', JSON.stringify(moviesList));
+            console.log(localStorage.getItem('savedMovies'));
+        }
+
+        rating.addEventListener("change", addRating);
+        function addRating(){
+            var star = Number(document.querySelector('input[name=star]:checked').value);
+            var symbols = document.getElementsByClassName("star");
+            
+            for (let i = 0; i < symbols.length; i++)
+                symbols[i].style.color = "#b8c0e0";
+            for (let i = star - 1; i >= 0; i--)
+            {
+                symbols[i].style.color = "#eed49f";
+            }
+        }
+
+        function update(list){
+            var directory = document.getElementById("directory"); 
+            directory.innerHTML = "";
+
+            for (let i = 0; i < list.length; i++)
+            {
+                var strToAdd = "";
+                var star = "★"; 
+
+                strToAdd += ` (${list[i].year})`;
+                strToAdd += ` - ${list[i].genre}, Rating:`;
+
+                directory.innerHTML += `<li><b>${list[i].title}</b>${strToAdd} <span style="color:#eed49f">${star.repeat(list[i].rating)}</span></li><br>`;
+            }
+        }
+    </script>
+</body>
+</html>
