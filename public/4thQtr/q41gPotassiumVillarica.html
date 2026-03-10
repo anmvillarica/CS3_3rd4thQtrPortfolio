@@ -173,6 +173,7 @@
                 rating: starInp.value
             }
 
+            // stores object in array & updates user view
             moviesList.push(movie);
             update(moviesList);
 
@@ -192,11 +193,15 @@
 
         rating.addEventListener("change", addRating);
         function addRating(){
+            // get value from radio button
             var star = Number(document.querySelector('input[name=star]:checked').value);
+            
             var symbols = document.getElementsByClassName("star");
             
             for (let i = 0; i < symbols.length; i++)
                 symbols[i].style.color = "#b8c0e0";
+
+            //  colors every star yellow until the nth star
             for (let i = star - 1; i >= 0; i--)
             {
                 symbols[i].style.color = "#eed49f";
