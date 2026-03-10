@@ -3,66 +3,77 @@
 }
 
 body {
-    width: 96vw; 
-    padding: 0.25vh 2vw; 
     background-color: #24273a; color: #cad3f5;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.25vw; 
+    font-size: 0.9vw; 
+    margin: 0; overflow-x: hidden; padding: 0; 
+}
+
+h2 {
+    font-size: 1.5vw; 
+}
+
+#page {
+    width: 96vw; 
+    padding: 0; 
+    height: 50vh;
+}
+
+#page > div {
+    padding: 0.25vh 2vw
 }
 
 #header {
-    top: 0.25vh;  
+    width: 95vw; margin: auto; 
+    top: 2vh; height: auto; z-index: 2;  
     position: sticky;
-    font-size: 1.5vw;
-    background-color: #1e2030;
-    display: grid; 
-    border-radius: 5px;
-    grid-template-rows: 20vh;
-    grid-template-columns: 20vw, repeat(4, 19vw);
-    align-items: center;
-    justify-items: center;
-    font-size: 100%;
+    font-size: 1vw;
+    background-color: #1e2030; color: #f5bde6; 
+    border-radius: 5px; padding: 2vw; 
+    text-align: center; 
 }
 
-#title { grid-area: 1 / 1; }
-#links { 
-    grid-area: 1 / 2 span 3; 
-    display: flex;
-    gap: 1.5vw;
-}
-#desc { grid-area: 1 / 4;}
-#menu_icon { grid-area: 1 / 5; }
-
-#hero_sctn {
-    width: 100%; height: 80vh;
-    display: grid;
-    grid-template-rows: 40vh, 40vh;
-    grid-template-columns: 64vw, 32vw;
-    align-items: center;
-    justify-items: center;
+#main {
+    transform: translateY(5vh); 
+    display: flex; gap: 5vw; 
 }
 
-#footer {
-    transform: translateY(15vh);
+#style {
+    width: 40vw;
+}
+
+#style > span {
+    display: flex; gap: 2vh; 
+}
+
+#style > span > img {
+    border-radius: 5px; 
+}
+
+footer {
+    width: 100vw; 
     background-color: #1e2030; 
-    padding: 10px; border-radius: 5px;
+    text-align: center; 
+    height: 44vh; 
+    margin-top: auto; 
 }
 
-#works_list {
-    opacity: 0; 
+#details > ul {
+    display: flex; 
+    gap: 11vw; justify-content: center;
+    padding-right: 7vw;
 }
 
-p { color: #b8c0e0; }
-
-h1 { color: #f5a97f; font-size: 3vw;}
-
-a {
+li > button {
+    border: none; 
+    font-family: "Roboto", sans-serif;
     color: #24273a;
     border-radius: 5px;
-    text-decoration: none;
-    font-family: inherit; font-size: inherit; padding: 5px; 
+    font-size: 0.9vw;
 }
 
-.hover:hover {
-    background-color: #cad3f5;
+a {
+    text-decoration: none;
+    color: inherit; 
 }
+

@@ -15,65 +15,61 @@
 </head>
 
 <body>
+    <div id="page">
     <div id="header">
-        <a href="index.html"><h1 id="title">1an._.na</h1></a>
-        <!-- <div id="links">
-            <a href="" class="hover" style="background-color: #8aadf4;">Works</a>
-            <a href="" class="hover" style="background-color: #ed8796;">About Me</a>
-        </div> !-->
-        <p id="desc"><em>Inspired by Catppuccin Theme for VS Code</em></p>
-        <button id="menu_icon"  onclick="document.getElementById(works_list).style.opacity=1;"><i style="font-size:2vw;" class="fa">&#xf0c9;</i></button>
+        <h2 id="title">1an._.na</h2>
     </div>
 
-    <div id="page">
-        <div id="hero_sctn">
-            <img src="./media/wada.png" style="grid-area: 1 / 1; width: auto; height: 40vh;">
-            <span style="grid-area: 1 / 2;" >
-                <h2>Hello! I am <strong>Arianna Villarica</strong> from 9 - Potassium!</h2>
-                <p>I'm 15 years old and I really enjoy Math and Statistics! <3</p>
-                <p>My hobbies are singing, reading books, drawing, crocheting, and playing the guitar!</p>
-                
-                <h3>Other Info!</h3>
-                <ul>
-                    <li><b>Clubs:</b> Sigasig, Himig Agham</li>
-                    <li><b>Favorite Song Genre:</b> OPM</li>
-                    <li><b>Favorite Color:</b> Light Blue 🩵</li>
-                    <li><b>Favorite Emojis:</b> 💖 😭 ☺️</li>
-                    <li><b>Favorite Animal:</b> Penguin</li>
-                </ul>
+    <div id="main">
+        <div id="style">
+            <span>
+                <img style="width: 20vw; height: auto;" src="./media/homepage/anime_listeningtomusic.png">
+                <img style="width: 20vw; height: auto;" src="./media/homepage/anime_reading.png">
             </span>
-            <span style="grid-area: 2 / 1; background-color: #1e2030; padding: 5px; border-radius: 5px;">
-                <h3>Works!</h3>
-                <ul>
-                    <li><a href="./public/Q3_2GPotassiumVillarica.html" class="hover" style="background-color: #8aadf4;">2G</a></li>
-                    <li><a href="./public/Q3_3GPotassiumVillarica.html" class="hover" style="background-color: #8aadf4;">3G</a></li>
-                 </ul>
-                
-                <h3>Contact Me!</h3>
-                <ul>
-                    <li><b>Discord:</b> 1an._.na</li>
-                    <li><b>Instagram:</b> iannapops</li>
-                    <li><b>Facebook:</b> Arianna Villarica</li>
-                    <li><b>Email:</b> b2029anmvillarica@pshs.edu.ph / arninavillarica@gmail.com</li>
-                </ul>
-            </span>
-            <img src="./media/me.jpg" style="grid-area: 2 / 2; width: auto; height: 40vh;">
+            <p>Listening to:</p>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4FmeVH5lIipcrOiEdv1Hd2?utm_source=generator" width="100%" height="" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>  
+        <div id="works">
+            <ul>
+                <li>
+                    <button style="background-color: #7dc4e4;"><a href="./public/4thQtr/q41gPotassiumVillarica.html">🔥 4th Quarter 1st Graded</a></button>
+                    <p>Finished, Last Updated March 10, 2026</p>
+                </li>
+            </ul>
         </div>
     </div>
-    <p id="footer">	&copy; Arianna Villarica <span id="year"></span></p>
-    <br>
 
-    <div id="works_list"">
-        <ul>
-            <li><a href="./public/Q3_2GPotassiumVillarica.html" class="hover" style="background-color: #8aadf4;">2G</a></li>
-
-        </ul>
-    </div>
+    <footer>
+        <br>
+        <p>&copy; 2026 Arianna Villarica</p>
+        <div id="details">
+            <h3 style="color:#c6a0f6">Contact Me @</h3>
+            <ul>
+                <li>b2029anmvillarica@pshs.edu.ph</li>
+                <li>iannapops (Instagram)</li>
+                <li>Arianna Villarica (Facebook)</li>
+                <li>1an._.na (Discord)</li>
+            </ul>
+        </div>
+    </footer>
 
     <script>
-        // Auto-set current year 
-        document.getElementById('year').textContent = new Date().getFullYear(); 
+        var menuBtn = document.getElementById("menu");
+        var menuTrue = false; 
+
+        menuBtn.addEventListener('click', () => {
+            if (!menuTrue){
+                menuBtn.style.color = "#8aadf4";
+                menuTrue = true; 
+            }
+            else 
+            {
+                menuBtn.style.color = "#cad3f5";
+                menuTrue = false; 
+            }
+        })
     </script>
+
 </body>
 
 </html>
