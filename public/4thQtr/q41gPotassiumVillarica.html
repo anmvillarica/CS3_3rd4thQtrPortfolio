@@ -246,8 +246,18 @@
             {
                 if ((curr.title == list[i].title))
                 {
-                    curr.rating = (Number(list[i].rating) + Number(curr.rating)) / 2;
-                    console.log(list[i].rating);
+                    if (list[i].counter < 2)
+                        list[i].counter = 2; 
+                    else
+                        list[i].counter = Number(list[i].counter) + 1; 
+
+                    let counter = Number(list[i].counter);
+                    let ogRating = Number(list[i].rating);
+                    let newRating = Number(curr.rating);
+
+                    curr.rating = (ogRating*(counter - 1) + newRating) / counter;
+                    curr.counter = counter; 
+                    console.log(curr);
                     notInList = false; 
                     list[i] = curr; 
                     break; 
