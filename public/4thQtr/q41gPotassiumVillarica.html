@@ -244,11 +244,12 @@
             var notInList = true; 
             for (let i = 0; i < list.length; i++)
             {
-                if ((curr.title == list[i].title) && (curr.year == list[i].year))
+                if ((curr.title == list[i].title))
                 {
-                    list[i].rating = (Number(list[i].rating) + Number(curr.rating)) / 2;
+                    curr.rating = (Number(list[i].rating) + Number(curr.rating)) / 2;
                     console.log(list[i].rating);
                     notInList = false; 
+                    list[i] = curr; 
                     break; 
                 }
             }
