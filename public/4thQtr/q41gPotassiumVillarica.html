@@ -175,7 +175,7 @@
             }
 
             // reset radio buttons
-            var star = document.querySelectorAll('.starRating');
+            var star = document.getElementsByClassName('starRating');
             star[Number(movie.rating) - 1].checked = false; 
             
             // stores object in array & updates user view
@@ -185,7 +185,7 @@
             titleInp.value = "";
             yearInp.value = ""; 
             genreInp.value = "";
-            starInp.value = "";
+
 
             var symbols = document.getElementsByClassName("star");
             
