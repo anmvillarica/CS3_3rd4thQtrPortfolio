@@ -93,23 +93,23 @@ footer a {
     display: inline-block;
     background: url('./images/sprites.png') no-repeat;
 }
-#facebook {
+.facebook {
     background-position: -226px -129px;
 }
-#twitter {
+.twitter {
     background-position: -340px -129px;
 }
-#github {
+.github {
     background-position: -456px -129px;
 }
 
-#facebook:hover {
+.facebook:hover {
   background-position: -226px -55px;
 }
-#twitter:hover {
+.twitter:hover {
   background-position: -340px -54px;
 }
-#github:hover {
+.github:hover {
   background-position: -456px -54px;
 }
 
